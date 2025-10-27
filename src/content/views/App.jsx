@@ -1,10 +1,18 @@
 import Logo from '@/assets/crx.svg'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
   const [show, setShow] = useState(false)
   const toggle = () => setShow(!show)
+
+  useEffect(() => {
+    chrome.runtime.onMessage.addListener((msg, ) => {
+      if(msg === "download-complete") {
+        setShow(true);
+      }
+    })
+  }, [])
 
   return (
     <div className="popup-container">

@@ -11,6 +11,10 @@ export default defineManifest({
   permissions: [
     'sidePanel',
     'contentSettings',
+    'downloads',
+    'downloads.open',
+    'tabs',
+    'activeTab'
   ],
   action: {
     default_icon: {
@@ -25,4 +29,7 @@ export default defineManifest({
   side_panel: {
     default_path: 'src/sidepanel/index.html',
   },
+  background: {
+    "service_worker": "src/workers/background.js"
+  }
 })
