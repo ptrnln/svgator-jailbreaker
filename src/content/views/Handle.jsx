@@ -34,8 +34,13 @@ export default function Handle() {
   function handleResize(e) {
     let elmnt = document.querySelector('.popup-container');
 
-    elmnt.style.top = (window.innerHeight / innerHeight) * Number(elmnt.style.top.replaceAll("px", "")) + "px";
-    elmnt.style.left = (window.innerWidth / innerWidth) * Number(elmnt.style.left.replaceAll("px", ""))+ "px";
+    const top = Number(elmnt.style.top?.replaceAll("px", "")) || 
+      window.innerHeight - elmnt.style.bottom + (elmnt.getBoundingClientRect().bottom - elmnt.getBoundingClientRect().top) + "px";
+    const left = Number(elmnt.style.bottom?.replaceAll("px", "")) ||
+      window.innerWidth - elmnt.style.bottom + (elmnt.getBoundingClientRect().right - elmnt.getBoundingClientRect().left) + "px"
+
+    elmnt.style.top = (window.innerHeight / innerHeight) * top + "px";
+    elmnt.style.left = (window.innerWidth / innerWidth) * left + "px";
 
     innerHeight = window.innerHeight;
     innerWidth = window.innerWidth;
