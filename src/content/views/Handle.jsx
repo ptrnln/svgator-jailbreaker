@@ -7,10 +7,10 @@ export default function Handle() {
     e.preventDefault();
 
     let el = e.target;
-    while (el.className !== 'popup-container') {
+    
+    while (el.className.constructor.name === 'String' && !el.className.match("handle-container")) {
       el = el.parentElement
     }
-
     
     document.onmousemove = elementDrag;
     document.onmouseup = closeDragElement;
@@ -19,12 +19,13 @@ export default function Handle() {
   function elementDrag(e) {
     e.preventDefault();
 
-    let elmnt = document.querySelector('.popup-container');
+    let elmnt = document.querySelector('.handle-container');
 
-    elmnt.style.top = (e.clientY - 22) + "px";
-    elmnt.style.left = (e.clientX - 22) + "px";
+    elmnt.style.top = (e.clientY - Number(getComputedStyle(elmnt).marginTop.replace("px", ""))) + "px";
+    elmnt.style.left = (e.clientX - Number(getComputedStyle(elmnt).marginLeft.replace("px", ""))) + "px";
     elmnt.style.right = 'auto';
     elmnt.style.bottom = 'auto';
+
   }
 
   function closeDragElement() {
@@ -33,12 +34,12 @@ export default function Handle() {
   }
 
   function handleResize(e) {
-    let elmnt = document.querySelector('.popup-container');
+    let elmnt = document.querySelector('.handle-container');
 
     const top = Number(elmnt.style.top?.replaceAll("px", "")) || 
       window.innerHeight - elmnt.style.bottom + (elmnt.getBoundingClientRect().bottom - elmnt.getBoundingClientRect().top) + "px";
     const left = Number(elmnt.style.left?.replaceAll("px", "")) ||
-      window.innerWidth - elmnt.style.bottom + (elmnt.getBoundingClientRect().right - elmnt.getBoundingClientRect().left) + "px"
+      window.innerWidth - elmnt.style.right + (elmnt.getBoundingClientRect().right - elmnt.getBoundingClientRect().left) + "px"
 
     elmnt.style.top = (window.innerHeight / innerHeight) * top + "px";
     elmnt.style.left = (window.innerWidth / innerWidth) * left + "px";

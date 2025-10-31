@@ -2,10 +2,10 @@
   position: fixed;
   bottom: 0;
   right: 0;
-  margin: 1.25rem;
+  margin: 6rem 1.25rem;
   z-index: 100;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
   font-family: ui-sans-serif, system-ui, sans-serif;
   user-select: none;
@@ -32,14 +32,16 @@
   padding: 0.5rem 1rem;
   margin: auto 0.5rem 0 0;
   transition: opacity 300ms;
+  filter: drop-shadow(0 1px 3px 0 rgba(0, 0, 0, 0.5));
 }
 
 .toggle-button {
-  display: fixed;
+  --icon-color: black;
+  display: flex;
   justify-content: center;
+  /* align-items: center; */
   width: 2.5rem;
   height: 2.5rem;
-  justify-self: flex-start;
   border-radius: 9999px;
   box-shadow:
     0 1px 3px 0 rgb(0 0 0 / 0.1),
@@ -47,9 +49,24 @@
   cursor: pointer;
   border: none;
   background-color: #288cd7;
+  &:is([disabled]) {
+    --icon-color: dimgrey;
+    background-color: grey;
+    cursor: not-allowed;
+    color: dimgrey;
+    & * {
+      cursor: not-allowed;
+      pointer-events: none;
+      color: currentColor;
+    }
+  }
+  & img, svg, object {
+    margin: 0.2px;
+    pointer-events: none;
+  }
 }
 
-.toggle-button:hover {
+.toggle-button:hover:not([disabled]) {
   background-color: #1e6aa3;
 }
 
@@ -64,3 +81,5 @@
 .opacity-0 {
   opacity: 0;
 }
+
+
