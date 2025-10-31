@@ -27,4 +27,4 @@ npm install ; npm run build
 
 3. Open Chrome and navigate to `chrome://extensions/`, enable "Developer mode", and load the unpacked extension from the `dist` directory.
 
-Note: If you have trouble installing dependencies, try deleting `package-lock.json` if you can.
+Note: If you have trouble installing dependencies, try deleting `package-lock.json` if you can. 
