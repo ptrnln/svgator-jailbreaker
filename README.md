@@ -19,7 +19,7 @@ This extension will allow you to remove the watermark from .svg SVGator download
 git clone svgator-jailbreaker https://github.com/ptrnln/svgator-jailbreaker.git ; cd svgator-jailbreaker
 ```
 
-2. Install dependencies and build the dist file:
+2. Install dependencies and build the `dist` directory:
 
 ```bash
 npm install ; npm run build
