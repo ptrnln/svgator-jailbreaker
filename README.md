@@ -1,51 +1,28 @@
-# React + Vite + CRXJS
+# SVGator Jailbreaker v0.0.1
 
-This template helps you quickly start developing Chrome extensions with React and Vite. It includes the CRXJS Vite plugin for seamless Chrome extension development.
+This extension will allow you to remove the watermark from .svg SVGator download files, as well as expose the JavaScript API.
 
 ## Features
 
-- React with modern syntax
-- Vite build tool
-- CRXJS Vite plugin integration
-- Chrome extension manifest configuration
+| ID & Name of Feature | Implemented | Prerequisite features |
+|----------------------|-------------|-----------------------|
+| 1 - Watermark removal | ❌ | 3
+| 2 - JavaScript API exposure | ❌ | 3
+| 3 - Opening download files | ❌ | 
+| 4 - Preview GUI | ❌ | 3
 
-## Quick Start
+## How to install
 
-1. Install dependencies:
+1. Clone the repo and enter into it:
 
 ```bash
-npm install
+git clone svgator-jailbreaker https://github.com/ptrnln/svgator-jailbreaker.git ; cd svgator-jailbreaker
 ```
 
-2. Start development server:
+2. Install dependencies and build the dist file:
 
 ```bash
-npm run dev
+npm install ; npm run build
 ```
 
 3. Open Chrome and navigate to `chrome://extensions/`, enable "Developer mode", and load the unpacked extension from the `dist` directory.
-
-4. Build for production:
-
-```bash
-npm run build
-```
-
-## Project Structure
-
-- `src/popup/` - Extension popup UI
-- `src/content/` - Content scripts
-- `manifest.config.js` - Chrome extension manifest configuration
-
-## Documentation
-
-- [React Documentation](https://reactjs.org/)
-- [Vite Documentation](https://vitejs.dev/)
-- [CRXJS Documentation](https://crxjs.dev/vite-plugin)
-
-## Chrome Extension Development Notes
-
-- Use `manifest.config.js` to configure your extension
-- The CRXJS plugin automatically handles manifest generation
-- Content scripts should be placed in `src/content/`
-- Popup UI should be placed in `src/popup/`
