@@ -7,6 +7,9 @@ import manifest from './manifest.config.js'
 import { name, version } from './package.json'
 
 export default defineConfig({
+  define: {
+    __PROJECT_NAME__: JSON.stringify(name)
+  },
   resolve: {
     alias: {
       '@': `${path.resolve(__dirname, 'src')}`,

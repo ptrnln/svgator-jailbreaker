@@ -1,38 +1,38 @@
-import { file } from "@babel/types";
-
-export const RECEIVE_FILE = "downloads/RECEIVE_FILE";
-export const REMOVE_FILE = "downloads/REMOVE_FILE";
+export const RECEIVE_ITEM = "downloads/RECEIVE_ITEM";
+export const REMOVE_ITEM = "downloads/REMOVE_ITEM";
 
 
 const initialState = {
-    files: {
+    items: {
         
     }
 };
 
-export const receiveFile = file => {
+export const receiveItem = item => {
     return {
-        type: RECEIVE_FILE,
-        payload: file
+        type: RECEIVE_ITEM,
+        payload: item
     }
 }
 
-export const removeFile = fileID => {
+export const removeItem = itemID => {
     return {
-        type: REMOVE_FILE,
-        payload: fileID
+        type: REMOVE_ITEM,
+        payload: itemID
     }
 }
 
-export default downloadsReducer = (state = initialState, action) => {
+export default function downloadsReducer(state = initialState, action) {
     let newState = { ...Object.freeze(state) }
 
     switch (action.type) {
-        case RECEIVE_FILE:
-            return { newState,
-                [action.payload.id]: action.payload
+        case RECEIVE_ITEM:
+            return { ...newState,
+                items: { ...newState.items,
+                    [action.payload.id]: action.payload
+                }
             }
-        case REMOVE_FILE:
+        case REMOVE_ITEM:
             delete newState[action.payload]
             return newState;
         default:

@@ -3,15 +3,19 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import DownloadMessage from './DownloadMessage'
 import Handle from './Handle'
+import * as downloadActions from '../store/downloads'
+import { useDispatch } from 'react-redux'
 
 function App() {
   const [show, setShow] = useState(false)
   const toggle = () => setShow(!show)
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    chrome.runtime.onMessage.addListener((msg, ) => {
-      if(msg === "download-complete") {
+    chrome.runtime.onMessage.addListener(async (msg, ) => {
+      if(msg.action === 'downloadFile') {
         setShow(true);
+        if(msg.item) dispatch(downloadActions.receiveItem(msg.item));
       }
     })
     if(document.querySelector('.popup-container ::before') && 

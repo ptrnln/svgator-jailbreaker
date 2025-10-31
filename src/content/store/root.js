@@ -1,8 +1,9 @@
 import { legacy_createStore as createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { thunk } from 'redux-thunk';
+import downloadsReducer from './downloads';
 
-const rootReducer = () => combineReducers({
-
+const rootReducer = combineReducers({
+  downloads: downloadsReducer
 })
 
 let enhancer;
